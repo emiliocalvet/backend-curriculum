@@ -1,5 +1,5 @@
 export enum CurriculumStatus {
-  WAITING = 'Aguardando',
-  APPROVED = 'Aprovado',
-  REPPROVED = 'Reprovado'
+  WAITING = 'AGUARDANDO',
+  APPROVED = 'APROVADO',
+  REPPROVED = 'REPROVADO'
 }

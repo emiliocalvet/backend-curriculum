@@ -2,8 +2,7 @@ import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateCurriculumDto } from './dto/create-curriculum.dto';
-import { UpdateCurriculumStatus } from './dto/update-curriculum.dto';
-import { CurriculumStatus } from './interfaces/curriculum-status.enum';
+import { UpdateCurriculumStatusDto } from './dto/update-curriculum.dto';
 import { Curriculum, CurriculumDocument } from './schemas/curriculum.schema';
 
 @Injectable()
@@ -26,17 +25,17 @@ export class CurriculumsService {
   async findById(id: string): Promise<Curriculum> {
     try {
       return await this.curriculumModel.findById(id)
-    } catch (_) {
-      this.logger.error(`Failed to find curriculum with id = ${id}`)
+    } catch (error) {
+      this.logger.error(`Failed to find curriculum with id = ${id}`, error.stack)
       throw new InternalServerErrorException()
     }
   }
 
-  async findByKey(key: string): Promise<Curriculum> {
+  async findByKey(accessKey: string): Promise<Curriculum> {
     try {
-      return await this.curriculumModel.findOne({ key })
-    } catch (_) {
-      this.logger.error(`Failed to find curriculum with key = ${key}`)
+      return await this.curriculumModel.findOne({ accessKey })
+    } catch (error) {
+      this.logger.error(`Failed to find curriculum with key = ${accessKey}`, error.stack)
       throw new InternalServerErrorException()
     }
   }
@@ -45,20 +44,20 @@ export class CurriculumsService {
     try {
       const createdCurriculum = new this.curriculumModel(createCurriculumDto)
       return await createdCurriculum.save()
-    } catch (_) {
-      this.logger.error('Failed to create curriculum')
+    } catch (error) {
+      this.logger.error('Failed to create curriculum', error.stack)
       throw new InternalServerErrorException()
     }
   }
 
   async updateStatus(
-    id: string, updateCurriculumStatus: UpdateCurriculumStatus
+    id: string, updateCurriculumStatusDto: UpdateCurriculumStatusDto
   ): Promise<Curriculum> {
     try {
-      await this.curriculumModel.updateOne({ _id: id}, updateCurriculumStatus)
+      await this.curriculumModel.updateOne({ _id: id }, updateCurriculumStatusDto)
       return this.findById(id)
     } catch (error) {
-      this.logger.error(`Failed to update curriculum with id = ${id}`)
+      this.logger.error(`Failed to update curriculum with id = ${id}`, error.stack)
       throw new InternalServerErrorException()
     }
   }
@@ -66,8 +65,8 @@ export class CurriculumsService {
   async delete(id: string): Promise<void> {
     try {
       await this.curriculumModel.deleteOne({ _id: id }).exec()
-    } catch (_) {
-      this.logger.error(`Failed to delete curriculum with id = ${id}`)
+    } catch (error) {
+      this.logger.error(`Failed to delete curriculum with id = ${id}`, error.stack)
       throw new InternalServerErrorException()
     }
   }
