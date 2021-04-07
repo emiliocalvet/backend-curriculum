@@ -29,6 +29,12 @@ export class Curriculum{
 
   @Prop({required: true})
   skills: Skill[]
+
+  @Prop({required: true})
+  status: string
+
+  @Prop({required: true})
+  accessKey: string
 }
 
 export const CurriculumSchema = SchemaFactory.createForClass(Curriculum)
