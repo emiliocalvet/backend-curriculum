@@ -31,8 +31,6 @@ export class CreateCurriculumDto {
   @IsNotEmpty()
   skills: Skill[]
 
-  @IsNotEmpty()
-  @IsString()
   status: string
 
   @MinLength(3)

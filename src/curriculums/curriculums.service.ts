@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateCurriculumDto } from './dto/create-curriculum.dto';
 import { UpdateCurriculumStatusDto } from './dto/update-curriculum.dto';
+import { CurriculumStatus } from './interfaces/curriculum-status.enum';
 import { Curriculum, CurriculumDocument } from './schemas/curriculum.schema';
 
 @Injectable()
@@ -42,6 +43,7 @@ export class CurriculumsService {
 
   async create(createCurriculumDto: CreateCurriculumDto): Promise<Curriculum> {
     try {
+      createCurriculumDto.status = CurriculumStatus.WAITING
       const createdCurriculum = new this.curriculumModel(createCurriculumDto)
       return await createdCurriculum.save()
     } catch (error) {
