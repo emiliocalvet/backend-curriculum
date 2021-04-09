@@ -11,7 +11,7 @@ export class CreateCurriculumDto {
   cpf: string
 
   // @IsDate()
-  bornDate: string
+  bornDate: Date
 
   @IsEmail()
   email: string
