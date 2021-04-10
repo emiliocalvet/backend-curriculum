@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
+import { ConflictException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateCurriculumDto } from './dto/create-curriculum.dto';
@@ -42,6 +42,11 @@ export class CurriculumsService {
   }
 
   async create(createCurriculumDto: CreateCurriculumDto): Promise<Curriculum> {
+    const { accessKey } = createCurriculumDto
+    const existentCurriculum = await this.findByKey(accessKey)
+    if (existentCurriculum) {
+      throw new ConflictException(`Curriculum with accesssKey = '${accessKey}' already exist`)
+    }
     try {
       createCurriculumDto.status = CurriculumStatus.WAITING
       const createdCurriculum = new this.curriculumModel(createCurriculumDto)
