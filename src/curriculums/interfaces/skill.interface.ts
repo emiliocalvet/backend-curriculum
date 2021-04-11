@@ -1,5 +1,5 @@
 export interface Skill {
-  name: string,
-  description: string,
-  proficiencyLevel: string
+  skillName: string,
+  skillDescription: string,
+  skillProficiencyLevel: string
 }

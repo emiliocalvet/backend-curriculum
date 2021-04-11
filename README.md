@@ -1,49 +1,39 @@
-## Description
+## Descrição
 
-Backend para cadastro de currículos
+Backend para gerenciamento de curriculos feito com NestJs + MongoDB
 
-## Installation
+## Instalação
+
+Para baixar todas as dependências, execute o seguinte comando na raiz do projeto.
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Executar
+
+Primeiramente é necessário criar o arquivo .env na pasta raiz do projeto com 2 variáveis.
+
+String de conexão com banco mongo.
+ex: MONGO_URL=mongodb+srv://usuario:senha@endereço-banco-dados/nome-tabela?retryWrites=true&w=majority
+
+String segredo para autenticação.
+ex: JWT_SECRET=zW@37wEr$Y542Ui@oa67Q$rs
+
+Depois de configurado arquivo .env basta rodar:
 
 ```bash
-# development
+# Desenvolvimeto
 $ npm run start
 
-# watch mode
+# Modo Assistido
 $ npm run start:dev
 
-# production mode
+# Modo Produção
 $ npm run start:prod
 ```
 
-## Test
+## Sobre
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- Author - [Emilio Calvet](https://emiliocalvet.github.io)
+- Licença - [MIT licensed](LICENSE).

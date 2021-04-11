@@ -10,10 +10,11 @@ export class CreateCurriculumDto {
   @IsString()
   cpf: string
 
-  // @IsDate()
-  bornDate: string
+  @IsString()
+  bornDate: Date
 
-  @IsEmail()
+  @IsNotEmpty()
+  @IsString()
   email: string
 
   @IsNotEmpty()
@@ -33,7 +34,7 @@ export class CreateCurriculumDto {
 
   status: string
 
-  @MinLength(3)
-  @MaxLength(20)
+  @IsNotEmpty()
+  @IsString()
   accessKey: string
 }
