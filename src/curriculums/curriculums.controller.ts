@@ -3,6 +3,8 @@ import { Body, Controller, Delete, Get, Logger, Param, Patch, Post, UseGuards, V
 import { CurriculumsService } from './curriculums.service';
 import { CreateCurriculumDto } from './dto/create-curriculum.dto';
 import { UpdateCurriculumStatusDto } from './dto/update-curriculum.dto';
+import { EducationCount } from './interfaces/education-count.interface';
+import { StatusCount } from './interfaces/status-count.interface';
 import { CurriculumStatusValidationPipe } from './pipes/curriculum-status-validation.pipe';
 import { Curriculum } from './schemas/curriculum.schema';
 
@@ -33,6 +35,20 @@ export class CurriculumsController {
   findByKey(@Param('key') key: string): Promise<Curriculum> {
     this.logger.verbose(`Getting curriculum with key = ${key}`)
     return this.curriculumService.findByKey(key)
+  }
+
+  // Return number of curriculums by status.
+  @Get('/status/count')
+  countByStatus(): Promise<StatusCount> {
+    this.logger.verbose(`Getting number of curriculums by status`)
+    return this.curriculumService.countByStatus()
+  }
+
+  // Return number of curriculums by education.
+  @Get('/education/count')
+  countByEducation(): Promise<EducationCount> {
+    this.logger.verbose(`Getting number of curriculum by education`)
+    return this.curriculumService.countByEducation()
   }
 
   // Create and save a new curriculum.
