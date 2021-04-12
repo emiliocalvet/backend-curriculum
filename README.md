@@ -36,4 +36,3 @@ $ npm run start:prod
 ## Sobre
 
 - Author - [Emilio Calvet](https://emiliocalvet.github.io)
-- Licença - [MIT licensed](LICENSE).
