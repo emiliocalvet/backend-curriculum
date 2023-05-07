@@ -1,5 +1,5 @@
-import { CurriculumStatus } from "../interfaces/curriculum-status.enum";
+import { CurriculumStatus } from '../enums/curriculum-status.enum';
 
 export class UpdateCurriculumStatusDto {
-  status: CurriculumStatus
+  status: CurriculumStatus;
 }

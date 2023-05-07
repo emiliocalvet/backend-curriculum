@@ -5,8 +5,12 @@ import { CurriculumsService } from './curriculums.service';
 import { Curriculum, CurriculumSchema } from './schemas/curriculum.schema';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: Curriculum.name, schema: CurriculumSchema }])],
+  imports: [
+    MongooseModule.forFeature([
+      { name: Curriculum.name, schema: CurriculumSchema },
+    ]),
+  ],
   controllers: [CurriculumsController],
   providers: [CurriculumsService],
 })
-export class CurriculumsModule { }
+export class CurriculumsModule {}

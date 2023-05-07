@@ -1,40 +1,46 @@
-import { IsNotEmpty, IsEmail, MinLength, MaxLength, IsString } from 'class-validator'
-import { Skill } from "../interfaces/skill.interface"
+import {
+  IsNotEmpty,
+  IsEmail,
+  MinLength,
+  MaxLength,
+  IsString,
+} from 'class-validator';
+import { Skill } from '../interfaces/skill.interface';
 
 export class CreateCurriculumDto {
   @IsNotEmpty()
   @IsString()
-  name: string
+  name: string;
 
   @IsNotEmpty()
   @IsString()
-  cpf: string
+  cpf: string;
 
   @IsString()
-  bornDate: Date
+  bornDate: Date;
 
   @IsNotEmpty()
   @IsString()
-  email: string
+  email: string;
 
   @IsNotEmpty()
   @IsString()
-  phone: string
+  phone: string;
 
   @IsNotEmpty()
   @IsString()
-  education: string
+  education: string;
 
   @IsNotEmpty()
   @IsString()
-  function: string
+  function: string;
 
   @IsNotEmpty()
-  skills: Skill[]
+  skills: Skill[];
 
-  status: string
+  status: string;
 
   @IsNotEmpty()
   @IsString()
-  accessKey: string
+  accessKey: string;
 }
